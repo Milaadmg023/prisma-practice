@@ -18,15 +18,15 @@ const Contacts = () => {
   }, []);
 
   return (
-    <div className="bg-slate-300 rounded-lg p-2 grid grid-cols-2 gap-2">
+    <div className="bg-slate-300 rounded-lg p-2 grid grid-cols-2 gap-2 justify-center items-center">
       {contacts.map((contact) => (
-        <div className="flex gap-2 h-fit justify-center">
+        <div className="flex bg-white p-2 rounded-lg gap-2 h-fit items-center" key={contact.id}>
           <Image
             src={contact.avatar}
             width={70}
             height={50}
             alt="avatar"
-            className="rounded-full"
+            className="rounded-full w-fit"
           />
           <div>
             <h1 className="text-xl">{contact.firstName}</h1>

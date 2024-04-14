@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const Form = () => {
   const [formData, setFormData] = useState({});
@@ -38,7 +39,7 @@ const Form = () => {
         },
         body: JSON.stringify(formData),
       });
-
+      window.location.reload();
     } catch (error) {
       console.log(error);
     }
