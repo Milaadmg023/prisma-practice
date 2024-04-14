@@ -6,13 +6,13 @@ const Form = () => {
   const formItems = [
     {
       id: 1,
-      name: "fname",
+      name: "firstName",
       type: "text",
       placeholder: "First Name",
     },
     {
       id: 2,
-      name: "lname",
+      name: "lastName",
       type: "text",
       placeholder: "Last Name",
     },
@@ -30,10 +30,21 @@ const Form = () => {
     },
   ];
   const HandleSubmit = () => {
-    console.log(formData);
+    try {
+      fetch("http://localhost:3000/api/contacts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
-    <div className="bg-slate-300 w-[50%] mx-auto rounded-lg">
+    <div className="bg-slate-300 w-full mx-auto rounded-lg">
       <h1 className="text-2xl font-bold p-2 w-fit mx-auto mt-2 rounded-lg text-slate-700 bg-slate-100">
         Create New Contact
       </h1>

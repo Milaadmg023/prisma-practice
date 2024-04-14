@@ -3,7 +3,7 @@ import Contacts from "@/components/Contacts";
 export default function Home() {
   return (
     <>
-    <div className="flex flex-col gap-1 p-2">
+    <div className="grid grid-cols-1 gap-1 p-2 lg:grid-cols-2">
       <Form/>
       <Contacts/>
     </div>
