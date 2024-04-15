@@ -25,9 +25,6 @@ const Contacts = () => {
     const singleContact = contacts.find((contact) => contact.id === id);
     setContact(singleContact);
   };
-  const HandleChange = (e) => {
-    setUpdatedContact({ ...updatedContact, [e.target.name]: e.target.value });
-  };
   const getContacts = async () => {
     try {
       const res = await fetch("http://localhost:3000/api/contacts");
@@ -54,6 +51,21 @@ const Contacts = () => {
       console.log(error);
     }
   };
+  const HandleDelete = async (id) => {
+    try {
+      const res = await fetch(`http://localhost:3000/api/update`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ id }),
+      });
+      const data = await res.json();
+      window.location.reload();
+    } catch (error) {
+      console.log(error);
+    }
+  }
   useEffect(() => {
     getContacts();
   }, []);
@@ -120,6 +132,7 @@ const Contacts = () => {
               <button
                 className="bg-red-700 px-4 py-1 text-slate-50 rounded-md z-10 hover:scale-125 transition-all duration-500 hover:bg-red-500"
                 href="#"
+                onClick={()=>HandleDelete(contact.id)}
               >
                 Delete
               </button>
